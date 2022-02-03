@@ -40,8 +40,8 @@ router.post("/projects",async(req,res)=>{
 
 router.patch('/projects/:id',async (req,res)=>{
     const iproject = await project.findOne({_id:req.params.id})
-    imovie.name = req.body.name
-    imovie.rating = req.body.rating
+    iproject.name = req.body.name
+    iproject.rating = req.body.rating
     await iproject.save((err,msg)=>{
         if(err){
             res.status(500).json({
