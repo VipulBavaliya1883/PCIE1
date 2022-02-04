@@ -59,20 +59,10 @@ router.patch('/projects/:id',async (req,res)=>{
 
 //delete api
 
-router.delete("/projects/:name",async(req,res)=>{
-    await project.deleteOne({name:req.params.name},(err,msg)=>{
-        if(err){
-            res.status(500).json({
-                error:err
-            })
-        }
-        else{
-            res.status(200).json({
-                msg:msg
-            })
-        }
-
-    })
+router.delete('/projects/:id', async (request, response) => {   // delete by id
+    const _id = request.params.id;
+    const iproject = await project.findByIdAndDelete(_id);
+    response.send(iproject);
 })
 
 
